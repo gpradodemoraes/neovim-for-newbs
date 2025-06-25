@@ -17,6 +17,18 @@ return {
       local builtin = require("telescope.builtin")
       vim.keymap.set("n", "<C-p>", builtin.oldfiles, {})
       vim.keymap.set("n", "<leader>fg", builtin.live_grep, {})
+      local actions = require("telescope.actions")
+        require("telescope").setup{
+          defaults = {
+            mappings = {
+              i = {
+                ["<esc>"] = actions.close,
+                ["<C-j>"] = actions.move_selection_next,
+                ["<C-k>"] = actions.move_selection_previous
+              },
+            },
+          }
+        }
 
       require("telescope").load_extension("ui-select")
     end,
